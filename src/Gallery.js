@@ -1,9 +1,36 @@
+import { useState, useEffect } from 'react';
+
 function Gallery(props) {
+  const [characters, setCharacters] = useState([]);
+  useEffect(() => {
+    getChars();
+  }, [])
+
+  const getChars = async () => {
+    const maxPages = 42;
+    const randomPage = Math.floor(Math.random() * maxPages) + 1;
+    const url = 'https://rickandmortyapi.com/api/character?page=' + randomPage;
+    try {
+      const response = await fetch(url);
+      const json = await response.json();
+
+      //cache images
+      for (let char of json.results) {
+        let img = new Image();
+        img.src = char.image;
+      }
+      setCharacters(json.results);
+
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   //get random sample of a particular size
   const gallerySize = 12;
-  const characters = shuffle(...props.characters).slice(0, gallerySize);
+  const shuffledChars = shuffle([...characters]).slice(0, gallerySize);
 
-  const galleryChars = characters.map((char) => {
+  const galleryChars = shuffledChars.map((char) => {
     return <img onClick={props.handleClick} src={char.image} key={char.id} id={char.id}/>
   });
 
