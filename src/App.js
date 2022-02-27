@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Scoreboard from './Scoreboard';
 import Gallery from './Gallery'
 

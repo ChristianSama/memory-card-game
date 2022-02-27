@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './css/Gallery.css';
 
 function Gallery(props) {
   const [characters, setCharacters] = useState([]);
@@ -42,13 +43,12 @@ function Gallery(props) {
 }
 
 function shuffle(array) {
+  //[1, 2, 3]
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
-
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
 }
-
 
 export default Gallery;
