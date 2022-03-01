@@ -1,6 +1,6 @@
 function Scoreboard(props) {
   return (
-    <div>
+    <div className="scoreboard">
       <h2>Current Score: {props.curScore}</h2>
       <h2>Best Score: {props.bestScore}</h2>
     </div>

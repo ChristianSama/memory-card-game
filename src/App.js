@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Scoreboard from './Scoreboard';
 import Gallery from './Gallery'
+import './css/App.css'
 
 function App() {
   const [curScore, setCurScore] = useState(0);
@@ -8,6 +9,7 @@ function App() {
   const [correctTries, setCorrectTries] = useState([]);
 
   const handleImageClick = (event) => {
+    event.preventDefault();
     const newTry = event.target.id;
 
     if (correctTries.includes(newTry)) {
@@ -26,7 +28,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="app">
       <Scoreboard curScore={curScore} bestScore={bestScore}></Scoreboard>
       <Gallery handleClick={handleImageClick}></Gallery>
     </div>
