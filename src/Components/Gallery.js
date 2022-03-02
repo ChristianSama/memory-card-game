@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import './css/Gallery.css';
+import '../css/Gallery.css';
 
 function Gallery(props) {
   const [characters, setCharacters] = useState([]);
