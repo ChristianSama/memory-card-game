@@ -14,7 +14,7 @@ function Scoreboard(props) {
       </div>
       <div className="buttons">
         <button onClick={showModal}>Help</button>
-        <button>Restart</button>
+        <button onClick={props.restartGame}>Restart</button>
       </div>
     </div>
   );
