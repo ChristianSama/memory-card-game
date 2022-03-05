@@ -9,12 +9,13 @@ function App() {
   const [bestScore, setBestScore] = useState(0);
   const [correctTries, setCorrectTries] = useState([]);
 
-
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
   const counter = useRef(0);
 
   const gallerySize = 12;
+  let shuffledChars = [];
 
   useEffect(() => {
     getChars();
@@ -49,7 +50,6 @@ function App() {
       }
 
       setCharacters(json.results);
-      // setIsLoading(false);
     } catch (error) {
       console.log("error", error);
     }
@@ -74,18 +74,30 @@ function App() {
     }
   }
 
+  //TODO: make it impossible to show 12 already guessed cards
+  shuffledChars = shuffle([...characters]).slice(0, gallerySize);
+
   return (
     <div className="app">
       <Scoreboard restartGame={restartGame} curScore={curScore} bestScore={bestScore}></Scoreboard>
-      <Gallery gallerySize={gallerySize} 
-               imageLoad={imageLoad} 
+      <Gallery imageLoad={imageLoad} 
                isLoading={isLoading} 
-               characters={characters} 
+               characters={shuffledChars} 
                handleClick={handleImageClick}></Gallery>
       <Modal></Modal>
     </div>
   );
 }
+
+function shuffle(array) {
+  //[1, 2, 3]
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 
 
 export default App;

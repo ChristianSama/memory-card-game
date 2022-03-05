@@ -13,8 +13,8 @@ function Scoreboard(props) {
         <h2>Best Score: {props.bestScore}</h2>
       </div>
       <div className="buttons">
-        <button onClick={showModal}>Help</button>
-        <button onClick={props.restartGame}>Restart</button>
+        <button className="help" onClick={showModal}>Help</button>
+        <button className="restart" onClick={props.restartGame}>Restart</button>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ function Modal(props) {
     <div onClick={hideModal} className="modal">
       <div className="window">
         <h3>Instructions</h3>
-        <p>Click on the most number of cards without clicking on the same card twice.</p>
+        <p>Don't click on any card more than once</p>
         <button id="modal-btn" onClick={hideModal}>Continue</button>
       </div>
     </div>

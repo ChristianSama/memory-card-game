@@ -9,9 +9,16 @@
   background-color: rgba(0,0,0,0.4); 
 }
 
-.modal > div {
+.window {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   background-color: white;
   width: 50%;
   margin: 20% auto;
   padding: 20px;
+}
+
+.window * {
+  margin-bottom: 1rem;
 }
